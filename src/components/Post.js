@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 //MaterialUI
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -32,7 +32,7 @@ class Post extends Component {
                 className={classes.image}
                 />
 
-                <CardContent class={classes.content}>
+                <CardContent className={classes.content}>
                     <Typography variant = "h5"
                                 component= {Link} 
                                 to={`/users/${userHandle}`}
