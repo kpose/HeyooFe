@@ -2,6 +2,7 @@
   "name": "heyooclient",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://us-central1-heyoo-9a975.cloudfunctions.net/api",
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "@testing-library/jest-dom": "^4.2.4",
@@ -32,7 +33,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "proxy": "https://us-central1-heyoo-9a975.cloudfunctions.net/api"
+    ]
+    
   }
 }
