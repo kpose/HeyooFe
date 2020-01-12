@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
+import EditDetails from './EditDetails';
 
 
 // MUI stuff
@@ -12,7 +13,7 @@ import MuiLink from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
@@ -85,6 +86,11 @@ class Profile extends Component {
         const fileInput = document.getElementById('imageInput');
         fileInput.click();
       };
+      
+      handleLogout = () => {
+        this.props.logoutUser();
+      };
+
   render() {
     const {
       classes,
@@ -145,6 +151,12 @@ class Profile extends Component {
               <CalendarToday color="primary" />{' '}
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
+            <Tooltip title="Logout" placement="top">
+              <IconButton onClick={this.handleLogout}>
+                <KeyboardReturn color="primary" />
+              </IconButton>
+            </Tooltip>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
