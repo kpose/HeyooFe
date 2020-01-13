@@ -3,7 +3,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
+import DeletePost from './DeletePost';
 import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
 
@@ -23,6 +23,7 @@ import { likePost, unlikePost} from '../redux/actions/dataActions';
 
 const styles = {
     card: {
+        position: 'relative',
         display: 'flex',
         marginBottom: 20,
     },
@@ -56,7 +57,7 @@ class Post extends Component {
     render() {
         dayjs.extend(relativeTime)
         const { classes, post : { body, createdAt, userImage, userHandle, postId, likeCount, commentCount }, 
-        user: { authenticated } } = this.props
+        user: { authenticated, credentials: { handle } }} = this.props;
 
         const likeButton = !authenticated ? (
             <MyButton tip="Like">
@@ -73,6 +74,9 @@ class Post extends Component {
               <FavoriteBorder color="primary" />
             </MyButton>
           );
+          const deleteButton = authenticated && userHandle === handle ? (
+            <DeletePost postId={postId} />
+          ) : null;
 
         return (
             <Card className={classes.card}>
@@ -88,6 +92,7 @@ class Post extends Component {
                                 to={`/users/${userHandle}`}
                                 color = "primary">                                
                                 {userHandle}</Typography>
+                                {deleteButton}
                     <Typography variant = "subtitle2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                     <br></br> 
                     <Typography variant = "body2">{body}</Typography> 
