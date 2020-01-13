@@ -13,7 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 // Redux stuff
 import { connect } from 'react-redux';
-import { makePost } from '../redux/actions/dataActions';
+import { makePost, clearErrors } from '../redux/actions/dataActions';
 
 const styles = (theme) => ({
   card: {
@@ -29,15 +29,17 @@ const styles = (theme) => ({
         objectFit: 'cover'
     },
   submitButton: {
-    position: 'relative'
+    position: 'relative',
+    float: 'right',
+    marginTop: 10
   },
   progressSpinner: {
     position: 'absolute'
   },
   closeButton: {
     position: 'absolute',
-    left: '90%',
-    top: '10%'
+    left: '91%',
+    top: '6%'
   }
 });
 
@@ -54,14 +56,14 @@ class MakePost extends Component {
       });
     }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({ body: '' });
-      this.handleClose();
+      this.setState({ body: '', open: false, errors: {} });
     }
   }
   handleOpen = () => {
     this.setState({ open: true });
   };
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
   handleChange = (event) => {
@@ -136,6 +138,7 @@ class MakePost extends Component {
 
 MakePost.propTypes = {
   makePost: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
 
@@ -145,5 +148,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { makePost }
+  { makePost, clearErrors }
 )(withStyles(styles)(MakePost));

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import DeletePost from './DeletePost';
+import PostDialog from './PostDialog';
+
+
 import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
 
@@ -103,7 +106,8 @@ class Post extends Component {
                     <MyButton tip="comments">
                         <ChatIcon color="primary" />
                     </MyButton>
-                    <span>{commentCount} comments</span>    
+                    <span>{commentCount} comments</span>
+                    <PostDialog postId={postId} userHandle={userHandle} />            
                 </CardContent>
             </Card>
 
