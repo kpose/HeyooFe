@@ -18,7 +18,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
 
-// Redux stuff
+// Redux stufff
 import { connect } from 'react-redux';
 import { getPost } from '../redux/actions/dataActions';
 
