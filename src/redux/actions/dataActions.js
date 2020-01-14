@@ -90,6 +90,8 @@ import axios from 'axios';
       .catch((err) => console.log(err));
   };
 
+
+  //delete post
   export const deletePost = (postId) => (dispatch) => {
     axios
       .delete(`/post/${postId}`)

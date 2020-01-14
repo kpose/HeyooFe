@@ -43,13 +43,13 @@ const initialState = {
         return {
           ...state
         };
-        case DELETE_POST:
-      index = state.posts.findIndex(
-        (post) => post.postId === action.payload
-      );
-      state.posts.splice(index, 1);
-      return {
-        ...state
+      case DELETE_POST:
+        let indexx = state.posts.findIndex(
+          (post) => post.postId === action.payload
+        );
+        state.posts.splice(indexx, 1);
+        return {
+          ...state
       };
       case MAKE_POST:
       return {

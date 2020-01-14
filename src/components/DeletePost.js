@@ -11,7 +11,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DeleteOutline from '@material-ui/icons/DeleteOutline';
 
 import { connect } from 'react-redux';
-import { deletePost} from '../redux/actions/dataActions';
+import { deletePost } from '../redux/actions/dataActions';
 
 const styles = {
   deleteButton: {

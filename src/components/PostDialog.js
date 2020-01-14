@@ -21,7 +21,7 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import { connect } from 'react-redux';
 import { getPost } from '../redux/actions/dataActions';
 
-const styles = (theme) => ({
+const styles = {
   
   closeButton: {
     position: 'absolute',
@@ -41,7 +41,7 @@ const styles = (theme) => ({
   dialogContent: {
     padding: 40
   }
-});
+};
 
 class PostDialog extends Component {
   state = {
@@ -66,18 +66,17 @@ class PostDialog extends Component {
         commentCount,
         userImage,
         userHandle
-      },
-      UI: { loading }
+      }, UI: {loading}
     } = this.props;
 
     const dialogMarkup = loading ? (
       <CircularProgress size={30} />
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={5}>
+      <Grid container spacing={10}>
+        <Grid item sm={3}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>
-        <Grid item sm={7}>
+        <Grid item sm={9}>
           <Typography
             component={Link}
             color="primary"
