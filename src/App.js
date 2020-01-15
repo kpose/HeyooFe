@@ -27,6 +27,8 @@ import { logoutUser, getUserData } from './redux/actions/userActions';
 
 const theme = createMuiTheme(themeFile);
 
+axios.defaults.baseURL = 'https://us-central1-heyoo-9a975.cloudfunctions.net/api'
+
 
 const token = localStorage.FBIdToken;
 if(token) {
@@ -44,8 +46,8 @@ if(token) {
 class App extends Component {
   render(){
     return (
-      <MuiThemeProvider theme={theme}>
-      <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
         <Router>
         <Navbar />
           <div className="container">
@@ -64,6 +66,7 @@ class App extends Component {
         </Router>
       </Provider>
       </MuiThemeProvider>
+     
     );
 
   }

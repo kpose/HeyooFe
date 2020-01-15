@@ -30,6 +30,7 @@ class Navbar extends Component {
                 </MyButton>
               </Link>
               <Notifications />
+              
             </Fragment>
           ) : (
             <Fragment>
@@ -42,6 +43,7 @@ class Navbar extends Component {
               <Button color="inherit" component={Link} to="/signup">
                 Signup
               </Button>
+              
             </Fragment>
           )}
         </Toolbar>
