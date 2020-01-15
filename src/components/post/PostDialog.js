@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 // MUI Stuff
 import Dialog from '@material-ui/core/Dialog';
@@ -20,7 +22,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 // Redux stufff
 import { connect } from 'react-redux';
-import { getPost } from '../redux/actions/dataActions';
+import { getPost,clearErrors } from '../../redux/actions/dataActions';
 
 const styles = {
   
@@ -50,6 +52,11 @@ const styles = {
     textAlign: 'center',
     marginTop: 50,
     marginBottom: 50
+  },
+  visibleSeparator: {
+    width: '100%',
+    borderBottom: '1px solid rgba(0,0,0,0.1)',
+    marginBottom: 20
   }
 };
 
@@ -63,6 +70,7 @@ class PostDialog extends Component {
   };
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
   };
 
   render() {
@@ -75,7 +83,8 @@ class PostDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-        userHandle
+        userHandle,
+        comments
       }, UI: {loading}
     } = this.props;
 
@@ -111,6 +120,10 @@ class PostDialog extends Component {
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
+        
+        <hr className={classes.visibleSeparator} />
+        <CommentForm postId={postId} />
+        <Comments comments={comments} />
       </Grid>
     );
     return (
@@ -145,6 +158,7 @@ class PostDialog extends Component {
 }
 
 PostDialog.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   getPost: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
@@ -158,7 +172,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  getPost
+  getPost,
+  clearErrors
 };
 
 export default connect(

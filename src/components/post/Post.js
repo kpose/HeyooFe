@@ -9,7 +9,7 @@ import LikeButton from './LikeButton';
 
 
 import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 //MaterialUI
 import Card from '@material-ui/core/Card';
