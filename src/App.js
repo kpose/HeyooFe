@@ -6,6 +6,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import themeFile from '../src/util/theme'
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import user from './pages/user';
 
 
 //components
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/" component={home}/>
             <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/users/:handle" component={user} />
           </Switch>
           </div>  
         </Router>
