@@ -78,6 +78,7 @@ import axios from 'axios';
       })
       .catch((err) => console.log(err));
   };
+  
   // Unlike a post
   export const unlikePost = (postId) => (dispatch) => {
     axios

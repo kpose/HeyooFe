@@ -4,7 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
-import LikeButton from './LikeButton';
+//import LikeButton from './LikeButton';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
 
@@ -108,6 +108,7 @@ class PostDialog extends Component {
         comments
       }, UI: {loading}
     } = this.props;
+    
 
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
@@ -134,8 +135,14 @@ class PostDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton postId={postId} />
-          <span>{likeCount} likes</span>
+
+          
+          {/*
+            TODO//like button error
+          <LikeButton postId = {postId} />*/}
+
+          <span>{likeCount} Likes</span>
+          
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
