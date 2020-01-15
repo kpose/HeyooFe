@@ -5,6 +5,11 @@ import Post from '../components/post/Post';
 import StaticProfile from '../components/profile/StaticProfile';
 import Grid from '@material-ui/core/Grid';
 
+
+import PostSkeleton from '../util/PostSkeleton';
+import ProfileSkeleton from '../util/ProfileSkeleton';
+
+
 import { connect } from 'react-redux';
 import { getUserData } from '../redux/actions/dataActions';
 
@@ -33,7 +38,7 @@ class user extends Component {
     const { postIdParam } = this.state;
 
     const postsMarkup = loading ? (
-      <p>Loading data...</p>
+      <PostSkeleton />
     ) : posts === null ? (
       <p>No posts from this user</p>
     ) : !postIdParam ? (
@@ -53,7 +58,7 @@ class user extends Component {
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
-            <p>Loading profile...</p>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}
